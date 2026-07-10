@@ -1,98 +1,281 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# EN2H Booking API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+A backend REST API for a Service Booking Platform built using **NestJS**, **Prisma ORM**, **PostgreSQL (Neon)**, and **JWT Authentication**.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## Live Demo
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### Live API
+https://en2h-booking-api.onrender.com
 
-## Project setup
+### Swagger Documentation
+https://en2h-booking-api.onrender.com/api
 
-```bash
-$ npm install
+### GitHub Repository
+https://github.com/sweetylinga/en2h-booking-api
+
+---
+
+# Features
+
+- User Registration
+- User Login with JWT Authentication
+- Protected Service APIs
+- CRUD Operations for Services
+- Booking Creation
+- Booking Status Update
+- Booking Deletion
+- Prevent Booking Dates in the Past
+- Prevent Cancelled → Completed Status Updates
+- Global Validation Pipe
+- Global Exception Filter
+- Swagger API Documentation
+- PostgreSQL Database using Prisma ORM
+
+---
+
+# Tech Stack
+
+- NestJS
+- TypeScript
+- Prisma ORM
+- PostgreSQL (Neon)
+- JWT Authentication
+- Swagger
+- Render
+- class-validator
+- bcrypt
+
+---
+
+# API Endpoints
+
+## Authentication
+
+| Method | Endpoint |
+|---------|----------|
+| POST | /auth/register |
+| POST | /auth/login |
+
+---
+
+## Services
+
+| Method | Endpoint |
+|---------|----------|
+| POST | /services |
+| GET | /services |
+| GET | /services/:id |
+| PUT | /services/:id |
+| DELETE | /services/:id |
+
+---
+
+## Bookings
+
+| Method | Endpoint |
+|---------|----------|
+| POST | /bookings |
+| GET | /bookings |
+| GET | /bookings/:id |
+| PATCH | /bookings/:id/status |
+| DELETE | /bookings/:id |
+
+---
+
+# Project Structure
+
+```
+src
+│
+├── auth
+├── bookings
+├── services
+├── users
+├── prisma
+├── common
+│   └── filters
+└── main.ts
 ```
 
-## Compile and run the project
+---
+
+# Installation
+
+Clone the repository
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+git clone https://github.com/sweetylinga/en2h-booking-api.git
 ```
 
-## Run tests
+Move into the project
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+cd en2h-booking-api
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+Install dependencies
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+npm install
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+---
 
-## Resources
+# Environment Variables
 
-Check out a few resources that may come in handy when working with NestJS:
+Create a `.env` file
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+```env
+DATABASE_URL=your_postgresql_database_url
 
-## Support
+JWT_SECRET=mySecretKey
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+PORT=3000
+```
 
-## Stay in touch
+---
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+# Prisma
 
-## License
+Generate Prisma Client
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+```bash
+npx prisma generate
+```
+
+Run migrations
+
+```bash
+npx prisma migrate deploy
+```
+
+For local development
+
+```bash
+npx prisma migrate dev
+```
+
+---
+
+# Running the Application
+
+Development
+
+```bash
+npm run start:dev
+```
+
+Production
+
+```bash
+npm run build
+npm run start:prod
+```
+
+---
+
+# Swagger Documentation
+
+After running the application locally
+
+```
+http://localhost:3000/api
+```
+
+Production
+
+```
+https://en2h-booking-api.onrender.com/api
+```
+
+---
+
+# Authentication
+
+1. Register a user
+
+```
+POST /auth/register
+```
+
+2. Login
+
+```
+POST /auth/login
+```
+
+3. Copy the JWT Token
+
+4. Click **Authorize** in Swagger
+
+5. Enter
+
+```
+Bearer <your_token>
+```
+
+Now all protected Service endpoints can be accessed.
+
+---
+
+# Business Rules
+
+- Booking date cannot be in the past.
+- Cancelled bookings cannot be marked as Completed.
+- Service endpoints are protected using JWT Guard.
+- Request validation implemented using class-validator.
+- Global exception filter handles application errors.
+
+---
+
+# Deployment
+
+**Backend:** Render
+
+https://en2h-booking-api.onrender.com
+
+**Database:** Neon PostgreSQL
+
+https://neon.tech
+
+---
+
+# Assignment Requirements Covered
+
+- NestJS
+- Prisma ORM
+- PostgreSQL
+- JWT Authentication
+- CRUD APIs
+- Validation
+- Exception Filter
+- Swagger
+- Deployment
+- GitHub Repository
+- .env.example
+
+---
+
+# Author
+
+**Linga Srilaxmi**
+
+GitHub
+
+https://github.com/sweetylinga
+
+Repository
+
+https://github.com/sweetylinga/en2h-booking-api
+
+LinkedIn
+
+https://www.linkedin.com/in/linga-srilaxmi
+
+---
+
+# License
+
+This project was developed as part of the EN2H Backend Assignment.
